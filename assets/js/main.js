@@ -95,7 +95,7 @@ var App = (function(App, $){
             }
         App.createChart(".hack", data, false)
     }
-    App.createRandomGauge = function(){
+    App.createRandomGauge = function(selector, realData, name, flow, min, range){
         var data = {
             columns: [
                 ['data', 91.4]
@@ -105,7 +105,21 @@ var App = (function(App, $){
                 'data': "#e54d42"
             }
         }
-        App.createChart(".hack", data, false)
+        var d = realData ? realData : data
+        if(name){
+            App.createChart(selector, d, false, name)
+            if(flow) App.addDataToGauge(name, min, range)
+        }
+        else App.createChart(selector, d, false)
+    }
+    App.addDataToGauge = function(name, min, range){
+        var val = min + parseInt((Math.random() * range).toFixed(2))
+        App[name].load({
+          columns: [['data', val]]
+        });
+        setTimeout(function(){
+            App.addDataToGauge(name, min, range)
+        }, 6000)
     }
     App.createFlowChart = function(selector, name, seriesName, min, range, color){
         var time = new Date()
@@ -210,6 +224,16 @@ var App = (function(App, $){
                 App.createFlowChart("#flow-chart-" + i, "chartflow" + i, "BPM", [70, 60, 100], [5, 10, 10], ["#e54d42", "#0072d0", "#1abc9c"]) 
                 //App.createFlowChart("#flow-chart-2", "chartflow2", "BPM", [70, 60, 100], [10, 30, 20], ["#e54d42", "#0072d0", "#1abc9c"])   
             })    
+            var dataGauge = {
+                columns: [
+                    ['data', 95.4]
+                ],
+                type: 'gauge',
+                colors:{
+                    'data': "#59DB59"
+                }
+            }
+            App.createRandomGauge(".nasaDashSummary", dataGauge, "nasaDashSummary", true, 90, 10)
         })
     }
     return App    
