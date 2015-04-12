@@ -9,6 +9,9 @@ var App = (function(App, $){
             case "nasa-user":
                 App.initUser()
                 break;
+            case "nasa-monitor":
+                App.initMonitor()
+                break;
         }
     }
     App.enableLogin = function(){
@@ -221,16 +224,72 @@ var App = (function(App, $){
         }, 3000);
     }
     App.getUsers = function(callback){
-        console.log("got users")
         var users=[
                     {
-                        "name": "John Doe"
+                        "name": "Samantha Cristoforetti",
+                        "age": 38,
+                        "image": "https://kappalanguageschool.files.wordpress.com/2014/11/cristoforetti.jpg",
+                        "height": "5'11\"",
+                        "weight": "150 lbs",
+                        "bpm": "74",
+                        "systolic": 112,
+                        "disatolic": 73,
+                        "health": 99
                     },
                     {
-                        "name": "Jane Doe"
+                        "name": "Scott Kelly",
+                        "age": 51,
+                        "image": "http://www.spacefacts.de/bios/portraits_hi/astronauts/kelly_scott.jpg",
+                        "height": "6'1\"",
+                        "weight": "173 lbs",
+                        "bpm": "71",
+                        "systolic": 117,
+                        "disatolic": 77,
+                        "health": 97
                     },
                     {
-                        "name": "Johnny Appleseed"
+                        "name": "Mikhail Kornienko",
+                        "age": 55,
+                        "image": "http://spaceflight.nasa.gov/gallery/images/station/crew-23/med/jsc2010e038786.jpg",
+                        "height": "6'3\"",
+                        "weight": "180 lbs",
+                        "bpm": "77",
+                        "systolic": 122,
+                        "disatolic": 78,
+                        "health": 101
+                    },
+                    {
+                        "name": "Gennady Padalka",
+                        "age": 56,
+                        "image": "http://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Padalka.jpg/220px-Padalka.jpg",
+                        "height": "6'0\"",
+                        "weight": "166 lbs",
+                        "bpm": "72",
+                        "systolic": 110,
+                        "disatolic": 75,
+                        "health": 103
+                    },
+                    {
+                        "name": "Terry Virts",
+                        "age": 47,
+                        "image": "http://www.spaceflight101.com/uploads/6/4/0/6/6406961/4146348_orig.jpg",
+                        "height": "6'4\"",
+                        "weight": "188 lbs",
+                        "bpm": "75",
+                        "systolic": 116,
+                        "disatolic": 72,
+                        "health": 100
+                    },
+                    {
+                        "name": "Anton Shkaplerov",
+                        "age": 43,
+                        "image": "http://www.spacefacts.de/more/cosmonauts/photo/shkaplerov_anton_3.jpg",
+                        "height": "6'1\"",
+                        "weight": "181 lbs",
+                        "bpm": "74",
+                        "systolic": 117,
+                        "disatolic": 76,
+                        "health": 100
                     }
             ]
         callback(users)
@@ -373,6 +432,37 @@ var App = (function(App, $){
 
         x = (x - mean) / sigma;
         return gaussianConstant * Math.exp(-.5 * x * x) / sigma;
+    }
+    App.initMonitor = function(){
+        App.getUsers(function(data){
+            var html = ""
+            $.each(data, function(i){
+                html += "<option val='" + data[i].name + "'>" + data[i].name + "</option>"
+            })
+            $("#formInput21").html(html).val(data[0].name)
+            $("#submit").off("click").on("click", function(e){
+                e.preventDefault()
+                var name = $("#formInput21").val()
+                var relJSON = data.filter(function(a){return a.name == name})[0]
+                var ignore = ["image", "health", "age"]
+                for(keys in relJSON){
+                    if(ignore.indexOf(keys) < 0) $("." + keys).text(relJSON[keys])
+                }
+                $(".astronautImage").attr("src", relJSON.image)
+                $(".name_truncated").text(name.split(" ")[0])
+                var dataGauge = {
+                    columns: [
+                        ['data', relJSON["health"]]
+                    ],
+                    type: 'gauge',
+                    colors:{
+                        'data': "#59DB59"
+                    }
+                }
+                App.createRandomGauge(".healthChart", dataGauge, "healthChart")
+            })
+            $("#submit").trigger("click")
+        })
     }
    App.makeRequest = function (url, method, contentType, params, auth, paramsType, succ, fail){
         params = method != "GET" ? JSON.stringify(params) : params
