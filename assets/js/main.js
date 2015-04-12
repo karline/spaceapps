@@ -2,6 +2,9 @@ var App = (function(App, $){
     App.server = "http://107.170.101.126:8080"
     App.settings = {}
     App.init = function(name){
+        $("button").off("click").on("click", function(){
+            e.preventDefault()
+        })
         switch(name){
             case "nasa-front":
                 App.initNasaFront()
@@ -97,7 +100,7 @@ var App = (function(App, $){
         }
         App.createChart(".hack", data, false)
     }
-    App.createRandomDonut = function(){
+    App.createRandomDonut = function(selector, name, realData){
         var data = {
             columns: [
                 [
@@ -114,7 +117,9 @@ var App = (function(App, $){
                 data2: "#1abc9c"
                 }
             }
-        App.createChart(".hack", data, false)
+        var d = realData ? realData : data
+        if(name) App.createChart(selector, d, false, name)
+        else App.createChart(selector, d, false)
     }
     App.createRandomGauge = function(selector, realData, name, flow, min, range){
         var data = {
@@ -296,6 +301,10 @@ var App = (function(App, $){
         callback(users)
     }
     App.initNasaFront = function(){
+        $("button").off("click").on("click", function(e){
+            e.preventDefault()
+            location.assign(document.URL.split("nasa-front.html")[0] + $(this).attr("href"))
+        })
         App.getUsers(function(data){
             $.each(data, function(i){
                 var html = '<section class="chart"><h3>Vitals for ' + data[i].name + '</h3><p>Live BPM, Systolic Pressure and Blood Glucose Data</p><div id="flow-chart-' + i + '" style="width:calc(100% - 20px); height:300px; position:relative; top:10px; left:10px;"></div></section>'
@@ -461,7 +470,62 @@ var App = (function(App, $){
                     }
                 }
                 App.createRandomGauge(".healthChart", dataGauge, "healthChart")
-                App.createFlowChart(".live-chart", "live-chart", "BPM", [70, 60, 100], [5, 10, 10], ["#e54d42", "#0072d0", "#1abc9c"])
+                App.createFlowChart(".live-chart", "live-chart", "BPM", [70, 60, 100], [5, 10, 10], ["#e54d42", "#0072d0", "#59DB59"])
+                var dVal = 30 + parseInt(Math.random()*20)
+                var dataDonut = {
+                    columns: [
+                        [
+                            'Active',
+                            dVal
+                        ],
+                        [
+                            'Inactive',
+                            100 - dVal
+                        ]],
+                    type: 'donut',
+                    colors: {
+                        Active: "#0072d0",
+                        Inactive: "#59DB59"
+                        }
+                    }
+                App.createRandomDonut(".activity-chart", "activity-data", dataDonut)
+                var healths = []
+                var names = []
+                var index = -1
+                $.each(data, function(i){
+                    healths.push(data[i].health)
+                    names.push(data[i].name)
+                    if(name == names[i]) index = i
+                })
+                healths.unshift("Health")
+                var dataBar = {
+                    columns: [
+                        healths
+                    ],
+                    type: 'bar'
+                }
+                var axis =  {
+                    x: {
+                        type: 'category',
+                        categories: names,
+                        label:{
+                            text: "Astronaut"
+                            }
+                        },
+                    y:{
+                        min:95,
+                        max:105,
+                        label:{
+                            text: "Health Level"
+                            }
+                    }
+                }
+                App["health-chart-all"] = c3.generate({
+                    bindto: ".health-chart-all",
+                    data: dataBar,
+                    axis: axis
+                });
+                $(".c3-bar-"+index).css("fill", "#59DB59")
             })
             $("#submit").trigger("click")
         })
