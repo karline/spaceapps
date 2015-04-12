@@ -2,7 +2,7 @@ var App = (function(App, $){
     App.server = "http://107.170.101.126:8080"
     App.settings = {}
     App.init = function(name){
-        $("button").off("click").on("click", function(){
+        $("button").off("click").on("click", function(e){
             e.preventDefault()
         })
         switch(name){
