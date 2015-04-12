@@ -48,6 +48,11 @@ box-shadow: 3px 5px 36px -9px rgba(0,0,0,0.75);
     background: transparent;
 }
 
+.row {
+  margin-right: 0;
+  margin-left: 0;
+}
+
 .navbar {
 border-radius: 0;
 background: rgba(240,240,240,1);
@@ -142,11 +147,42 @@ width: auto;
 float: left;
 }
 
+.mast form {
+  background: transparent url(assets/images/bg.png);
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.mast form .btn {
+  opacity: 1;
+}
+
 section.normal {
-background: rgb(173, 229, 173);
-color: #fff;
+background: rgb(221, 221, 221);
+color: #8E8E8E;
 border:none;
 box-shadow:0px 4px 6px 0px rgba(0, 0, 0, 0.24);
+}
+
+section.normal img{
+  margin: 0 0 10px 0;
+  width: 100%;
+}
+
+section.normal ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+section.normal li {
+  border-bottom: 1px solid #fff;
+  font-size: 2em;
+  padding: 2px 4px;
+}
+
+section.normal li:last-child {
+  border-bottom: none;
 }
 
 section.alert {
@@ -159,13 +195,18 @@ box-shadow:0px 4px 6px 0px rgba(0, 0, 0, 0.24);
 .alert h3, .normal h3 {
 color: #fff;
 border-bottom: none;
-
 }
+
+.normal h3 {
+  color: #443E3E;
+  margin-bottom: 10px;
+}
+
 select {
   height: 34px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  margin-left: 10px;
+  margin-left: 0;
   line-height: 34px;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
   padding-left: 5px;
