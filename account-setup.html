@@ -67,6 +67,9 @@
                 <div class="row">
                     <div class="ol-md-12">
                         <h1>Get Started</h1>
+                    <p>Thanks for helping NASA learn more about astronaut health! Along the way, you can track your personal statistics and increase your fitness on the way to becoming space-ready.</p>
+                    <p>To get started, we need to collect some basic information about you and your fitness level.</p>
+               
                     </div>
                 </div>
             </div>
@@ -75,19 +78,39 @@
         <div class="container">
             <!-- Example row of columns -->
             <div class="row">
-                <div class="col-md-6">
-                    <p>Thanks for helping NASA learn more about astronaut health! Along the way, you can track your personal statistics and increase your fitness on the way to becoming space-ready.</p>
-                    <p>To get started, we need to collect some basic information about you and your fitness level.</p>
+                
+
 
                     <form role="form">
+                <div class="col-md-4">
                             <div class="form-group"> 
+                                <h3>Your Account:</h3>
+                                <label class="control-label" for="username">Username:</label>                                 
+                                <input type="text" class="form-control" id="username" placeholder="">                                 
+                            </div> 
 
+                            <div class="form-group"> 
+                                <label class="control-label" for="password">Password:</label> 
+                                <li>Include at least 6 characters</li>
+                                <li>Include a lower case letter</li>
+                                <li>Include an upper case letter</li>
+                                <li>Include a number</li>
+                                <li>Include a punctuation character</li>                                
+                                <input type="password" class="form-control" id="pass" placeholder="">                                 
+                            </div> 
+
+                            <div class="form-group"> 
+                                <label class="control-label" for="confirm">Re-enter Password:</label>                                 
+                                <input type="password" class="form-control" id="confirm" placeholder="">                                 
+                            </div> 
+                        </div>
+                         <div class="col-md-4 middlecol">
+                            <div class="form-group"> 
                             <h3>About You:</h3>
-                                <label class="control-label" for="height">Height:</label>                                 
-                                <input type="text" class="form-control" id="height" placeholder="">                                 
-                            </div>
 
-                            <div class="form-group">
+                            
+                                <label class="control-label" for="height">Height:</label>                                 
+                                <input type="text" class="form-control" id="height" placeholder="">                          
 
                             <label class="control-label" for="heightmeasure">Units:</label>    
                                 <select id="heightmeasure">
@@ -101,15 +124,12 @@
                                 <label class="control-label" for="height">Weight:</label>                                 
                                 <input type="text" class="form-control" id="weight" placeholder="">
 
-                            </div>
-
-                            <div class="form-group">
 
                             <label class="control-label" for="weightmeasure">Units:</label>    
                                 <select id="weightmeasure">
                                     <option  value="kilogram">Kilograms</option>
 
-                                    <option  value="pound">Pound</pound>
+                                    <option  value="pound">Pound</pound></option>
                                 </select>                                 
                             </div>
 
@@ -129,7 +149,9 @@
                                 </select>                                 
                             </div>
 
+</div>
 
+                <div class="col-md-4 middlecol">
                             <h3>Your Biostatistics:</h3>
                             <div class="form-group"> 
                                 <label class="control-label" for="height">Resting Heart Rate</label>                                 
@@ -147,9 +169,7 @@
 
                             <div class="form-group"> 
                                 <label class="control-label" for="water">Water Intake Per Day</label>                                 
-                                <input type="text" class="form-control" id="waterintake" placeholder="">                                 
-                            </div>
-                            <div class="form-group">
+                                <input type="text" class="form-control" id="waterintake" placeholder="">                     
 
                             <label class="control-label" for="water-intake-measure">Units:</label>    
                                 <select id="water-intake-measure">
@@ -162,7 +182,9 @@
                             <div class="form-group"> 
                                 <label class="control-label" for="calories">Calorie Intake Per Day</label>                                 
                                 <input type="text" class="form-control" id="calories" placeholder="">                                 
-                            </div>                             
+                            </div>  
+                </div>
+                <div class="col-md-4">
                             <h3>Your Fitness Stats:</h3>
                             <div class="form-group"> 
                                 <label class="control-label" for="situps">Situps in a Minute</label>                                 
@@ -176,7 +198,7 @@
                                 <label class="control-label" for="weight">1 Mile Run Time</label>                                 
                                 <input type="text" class="form-control" id="weight" placeholder="">                                 
                             </div>
-                            <button type="submit" class="btn">Submit</button>                          
+                            <button type="submit" class="btn btn-primary btn-lg">Submit</button>                          
                         </form>
                 </div>
                
