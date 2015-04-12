@@ -1,10 +1,10 @@
 $(document).ready(function(){
-    $("#inputstats").click(function(){
-        $(".inputcandidate").slideToggle(1000);
+    $("body").on('click', '#inputstats', function(){
+        $(".inputcandidate").slideToggle(600);
     });
 
-    $("#selectuser").click(function(){
-        $(".selectcandidate").show(1000);
+    $("body").on('click', '#selectuser', function(){
+        $(".selectcandidate").show(300);
     });
 	$("#pass,#confirm").passy(function( strength, valid ) {
 	
