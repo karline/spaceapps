@@ -29,7 +29,7 @@ $(document).ready(function(){
     $(".form-control").change(function(){
         $(this).fadeTo("slow", .4);
     });
-
+});
 $("#submitbutton").click(function(){
     var obj = {}
     obj.height =                            parseFloat($('#height').value); // all these numbers could be NaN
@@ -73,4 +73,3 @@ $("#submitbutton").click(function(){
     //var encodedString = JSON.stringify(obj);
     $.post("http://107.170.101.126:8080/data/workAround/",obj,function(data,status){/* nothing to do here */});
     });
-});

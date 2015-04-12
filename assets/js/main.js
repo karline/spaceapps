@@ -258,6 +258,10 @@ var App = (function(App, $){
     App.initUser = function(){
         App.makeNormalChart(".weight_chart")
         App.makeNormalChart(".height_chart")
+        $(window).resize(function(){
+            App.makeNormalChart(".weight_chart")
+            App.makeNormalChart(".height_chart")    
+        })
         var value = 50 + parseInt(Math.random() * 30)
         var dataGauge = {
                 columns: [
@@ -271,8 +275,9 @@ var App = (function(App, $){
         App.createRandomGauge(".fitnessGauge", dataGauge, "fitnessGauge")
         $(".fitnessLevel").text(value + "%")
     }
-    App.makeNormalChart = function(selector){
-        var data = App.getNormalData(); // popuate data 
+    App.makeNormalChart = function(selector, mean, sigma){
+        $(selector).html('')
+        var data = App.getNormalData(mean, sigma); // popuate data 
         var margin = {
                 top: 20,
                 right: 20,
@@ -332,11 +337,11 @@ var App = (function(App, $){
             .attr("d", line);
     }
 
-    App.getNormalData = function() {
+    App.getNormalData = function(mean, sigma) {
         var data = [];
         for (var i = 0; i < 100000; i++) {
             q = App.normal() // calc random draw from normal dist
-            p = App.gaussian(q) // calc prob of rand draw
+            p = App.gaussian(q, mean, sigma) // calc prob of rand draw
             el = {
                 "q": q,
                 "p": p
@@ -361,10 +366,10 @@ var App = (function(App, $){
         c = Math.sqrt(-2 * Math.log(rds) / rds); // Box-Muller transform
         return x * c; // throw away extra sample y * c
     }
-    App.gaussian = function(x){
+    App.gaussian = function(x, m, s){
         var gaussianConstant = 1 / Math.sqrt(2 * Math.PI),
-            mean = 0,
-            sigma = 1;
+            mean = m ? m : 0,
+            sigma = s ? s: 1;
 
         x = (x - mean) / sigma;
         return gaussianConstant * Math.exp(-.5 * x * x) / sigma;
