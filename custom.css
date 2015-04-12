@@ -130,12 +130,29 @@ float: left;
   opacity: 1;
 }
 
+.col-md-3  {
+  min-height: 700px;
+}
+
 form h3 {
   padding: 13px 0 20px 0;
 }
 
 form input {
   margin-bottom: 10px;
+}
+
+.navbar form {
+  margin-bottom: 0;
+}
+
+.btn-success {
+  margin: -10px 0 0;
+}
+
+.navbar-form .form-group {
+  padding: 0;
+  margin: 0;
 }
 
 .form-group {
