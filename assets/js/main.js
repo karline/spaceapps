@@ -12,6 +12,9 @@ var App = (function(App, $){
             case "nasa-monitor":
                 App.initMonitor()
                 break;
+            case "nasa-testcandidate":
+                App.initTestCandidate()
+                break;
         }
     }
     App.enableLogin = function(){
@@ -295,6 +298,33 @@ var App = (function(App, $){
             ]
         callback(users)
     }
+    App.getPerson = function(callback){
+        var person=[
+                    {
+                        "name": "Johnny Appleseed",
+                        "age": 38,
+                        "image": "https://kappalanguageschool.files.wordpress.com/2014/11/cristoforetti.jpg",
+                        "height": "5'11\"",
+                        "weight": "150 lbs",
+                        "bpm": "74",
+                        "systolic": 112,
+                        "disatolic": 73,
+                        "health": 99
+                    }, 
+                    {
+                        "name": "Johnny Appleseed",
+                        "age": 38,
+                        "image": "https://kappalanguageschool.files.wordpress.com/2014/11/cristoforetti.jpg",
+                        "height": "5'11\"",
+                        "weight": "150 lbs",
+                        "bpm": "74",
+                        "systolic": 112,
+                        "disatolic": 73,
+                        "health": 99
+                    }
+            ]
+        callback(person)
+    }
     App.initNasaFront = function(){
         App.getUsers(function(data){
             $.each(data, function(i){
@@ -314,6 +344,101 @@ var App = (function(App, $){
             }
             App.createRandomGauge(".nasaDashSummary", dataGauge, "nasaDashSummary", true, 90, 10)
         })
+    }
+    App.initTestCandidate = function(){
+        App.getPerson(function(data){
+            $.each(data, function(i){
+                if (i == 0) {
+                    var html = '<section class="chart"><h3>Candidate Overall Health vs. Crowdsourced Data</p><div id="flow-chart-' + i + '" style="width:calc(100% - 20px); height:300px; position:relative; top:10px; left:10px;"></div></section>'
+                    $("#dashboards").append(html)
+                    App.createStaticChart("#flow-chart-" + i, "chartflow" + i, "BPM", [70, 60, 100], [5, 10, 10], ["#e54d42", "#0072d0", "#1abc9c"]) 
+            }
+            if (i == 1) {
+                    var html = '<section class="chart"><h3>Candidate Overall Health vs. Astronaut Data</p><div id="flow-chart-' + i + '" style="width:calc(100% - 20px); height:300px; position:relative; top:10px; left:10px;"></div></section>'
+                    $("#dashboards").append(html)
+                    App.createStaticChart("#flow-chart-" + i, "chartflow" + i, "BPM", [70, 60, 100], [5, 10, 10], ["#e54d42", "#0072d0", "#1abc9c"]) 
+            }
+                //App.createFlowChart("#flow-chart-2", "chartflow2", "BPM", [70, 60, 100], [10, 30, 20], ["#e54d42", "#0072d0", "#1abc9c"])   
+            })    
+            var dataGauge = {
+                columns: [
+                    ['data', 95.4]
+                ],
+                type: 'gauge',
+                colors:{
+                    'data': "#59DB59"
+                }
+            }
+            App.createRandomGauge(".nasaDashSummary", dataGauge, "nasaDashSummary", true, 90, 10)
+        })
+    }
+    App.createStaticChart = function(selector, name, seriesName, min, range, color){
+        $(selector).html('')
+        var time = new Date()
+        var time2 = new Date()
+        time2.setSeconds(time.getSeconds() - 3)
+        var time3 = new Date()
+        time3.setSeconds(time2.getSeconds() - 3)
+        var times = ['x',  time3, time2, time]
+        App[name] = c3.generate({
+            bindto: selector,
+            data: {
+                x: 'x',
+                columns: [
+                    times,
+                    ['User_BPM', 72, 74, 73],
+                    ['User_Systolic_Pressure', 120, 117, 119],
+                    ['User_Blood_Glucose', 67, 78, 77],
+                    ['Avg_BPM', 68, 70, 69],
+                    ['Avg_Systolic_Pressure', 116, 113, 115],
+                    ['Avg_Blood_Glucose', 63, 74, 73]
+                ],
+                types: {
+                  User_BPM:"spline",
+                  User_Systolic_Pressure: "spline",
+                  User_Blood_Glucose: "spline",
+                  Avg_BPM:"spline",
+                  Avg_Systolic_Pressure: "spline",
+                  Avg_Blood_Glucose: "spline"
+                },
+                colors: {
+                    User_BPM: color[0],
+                    User_Systolic_Pressure: color[1],
+                    User_Blood_Glucose: color[2],
+                    Avg_BPM: color[3],
+                    Avg_Systolic_Pressure: color[4],
+                    Avg_Blood_Glucose: color[5]
+                },
+                axes: {
+                    User_Systolic_Pressure: 'y2'
+                }
+            },
+            axis: {
+                x: {
+                    type: 'timeseries',
+                    tick: {
+                        format: '%X',
+                    }
+                },
+                y: {
+                    label: {
+                      text: 'BPM & Pressure',
+                      position: 'outer-middle'
+                    },
+                    min: 60,
+                    max: 90
+                },
+                y2:{
+                    label: {
+                      text: 'Glucose',
+                      position: 'outer-middle'
+                    },
+                    show: true,
+                    min: 100,
+                    max: 120
+                }
+            }
+        });
     }
     App.initUser = function(){
         App.makeNormalChart(".weight_chart")

@@ -166,32 +166,34 @@
                 <div class="col-md-4">
                     <section class="chart status normal">
                         <h3>Summary</h3>
-                        <p>[This Candidate] may be a good fit.</p>
+                        <p>Johnny Appleseed may be a good fit.</p>
                     </section>
-                    <section class="chart status alert">
+                    <!-- <section class="chart status alert">
                         <h3>Alert</h3>
                         <p>[This Astronaut] deviates [XX]% from standard [BPM]. Additional testing may be required
-                    </section>
+                    </section> -->
                 </div>
                 <div class="col-md-8">
                     <section class="chart">
-                        <h3>Candidate Overall Health vs. Crowdsourced Data</h3>
-                        <p>chart section placeholder</p>
+                      <!--   <h3>Candidate Overall Health vs. Crowdsourced Data</h3> -->
+                        <div id="dashboards">
+                        </div>
                     </section>
-                    <section class="chart">
+                   <!--  <section class="chart">
                         <h3>Candidate Overall Health vs. Astronaut Data</h3>
-                        <p>chart section placeholder</p>
-                    </section>                     
+                        <div id="dashboards">
+                        </div>
+                    </section>     -->                 
                     <h3>Outliers: Positive</h3> 
                     <section class="chart">
-                        <h3>Chart name</h3>
-                        <p>chart section placeholder</p>
+                        <h3>No positive outliers.</h3>
                     </section>
                     <h3>Outliers: Negative</h3>
                     <section class="chart">
-                        <h3>Chart name</h3>
-                        <p>chart section placeholder</p>
+                        <h3>No negative outliers.</h3>
                     </section>                     
+                </div>
+                <div class="col-md-8">
                 </div>
             </div>
         </div>
@@ -217,5 +219,8 @@
             App.init()
         })</script>
 <script src="assets/js/parallax.min.js"></script>
+<script>$(document).ready(function(){
+            App.init("nasa-testcandidate")
+        })</script>
     </body>
 </html>
