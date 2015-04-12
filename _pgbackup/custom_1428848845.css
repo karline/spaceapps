@@ -160,6 +160,12 @@ background: #ddd;
 
 }
 
+.inputcandidate {
+display: none; }
+
+.selectcandidate {
+display: none;
+}
 
 .mast {
   padding-bottom: 40px;
@@ -328,12 +334,14 @@ img.fitwidth {
     color: #fff;
 }
 
-.mast label.control-label {
+.mast .form-group label {
+  float: left;
   font-weight: bold;
   margin-right: 15px;
   font-size: 1.5em;
 }
 
 .mast .form-group select {
-
+width: auto !important;
+float: left;
 }

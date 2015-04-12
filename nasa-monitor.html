@@ -49,6 +49,9 @@
                                 </li>                                 
                             </ul>                             
                             <ul class="nav navbar-nav navbar-right"> 
+                                <div class="navbar-collapse collapse">
+                                    <span class="navbar-brand" href="#">Hello <span class="username">NASA!</span></span> 
+                                </div>
                                 <!--/.navbar-collapse -->
                             </ul>                             
                         </div>                         
@@ -58,109 +61,103 @@
                     <div class="row mast">
                         <div class="ol-md-12">
                             <h1>Monitor Astronaut Health</h1>
-                            <p>Test an astronaut against crowdsourced data to look for potential health problems.</p>
-                            <form role="form"> 
-                                <div class="form-group"> 
-                                    <div class="form-group"> 
-                                        <label class="control-label" for="formInput21">Test In-Space Astronaut</label>                                         
-                                        <select id="formInput21" class="form-control"> 
-                                            <option>Name Here</option>                                             
-                                            <option>2</option>                                             
-                                            <option>3</option>                                             
-                                        </select>
-                                    </div>                                     
-                                </div>                                 
-                                <button type="submit" class="btn btn-primary btn-lg" id="submit">Submit</button>
-                            </form>
-                        </div>
-                    </div>
+                            <p>Test an in-flight astronaut against crowdsourced data to look for potential health problems.</p>
+                            <form role="form">
+                                <div class="row pg-empty-placeholder">
+                                    <div class="container col-md-8">
+                                        <div class="form-group"> 
+                                            <select id="formInput21" class="form-control "> 
+                                                <option>Name Here</option>                                                 
+                                                <option>2</option>                                                 
+                                                <option>3</option>                                                 
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="container col-md-4" <div class="form-group"> 
+                                        <button type="submit" class="btn btn-primary btn-lg" id="submit">Submit</button>
+                                    </div>
+                                </div>
+                        </div>                         
+                    </form>
                 </div>
             </div>
         </div>
-        <div class="container">
-            <!-- Example row of columns -->
-            <div class="row">
-                <div class="col-md-12">
-                    <h2>Overall Stats - <span class="name"></span></h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <section class="chart status alert">
-                        <h3>Alert</h3>
-                        <p><span class="name"></span> has no alerts.
-                    </section>
-                    <section class="chart status normal">
-                        <h3 class="name">Neil Armstrong</h3>
-                        <div class="healthChart" style="width:100%; height:150px;"></div>
-                        <p><span class="name_truncated"></span> appears to be in good health.</p>
-                        <img class="astronautImage" src="http://assets.bizjournals.com/cincinnati/news/Neil_Armstrong_pose*304.jpg?v=1"/>
-                        <ul>
-                            <li>
-                                <strong>Height:</strong><span class="height"> 6'2"</span>
-                            </li>
-                            <li>
-                                <strong>Weight:</strong><span class="weight"> 198</span>
-                            </li>
-                            <li>
-                                <strong>Average BPM: </strong><span class="bpm"> 78</span>
-                            </li>
-                            <li>
-                                <strong>Average Systolic:</strong><span class="systolic"> 117</span>
-                            </li>
-                            <li>
-                                <strong>Average Diastolic:</strong><span class="disatolic"> 76</span>
-                            </li>
-                        </ul>
-                    </section>
-                </div>
-                <div class="col-md-8">
-                    <section class="chart">
-                        <h3>Livestream of In-Space Vitals</h3>
-                        <div class="live-chart" style="width:100%; height:200px;"></div>
-                    </section>                     
-                    <section class="chart">
-                        <h3>Chart name</h3>
-                        <p>chart section placeholder</p>
-                    </section>
-                    <section class="chart">
-                        <h3>Chart name</h3>
-                        <p>chart section placeholder</p>
-                    </section>                     
+
+    </div>
+</div>
+<div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Overall Stats - <span class="name"></span></h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+           
+            <section class="chart status normal">
+                <h3 class="name">Neil Armstrong</h3>
+                <div class="healthChart" style="width:100%; height:150px;"></div>
+                <p><span class="name_truncated"></span> appears to be in good health.</p>
+                <img class="astronautImage" src="http://assets.bizjournals.com/cincinnati/news/Neil_Armstrong_pose*304.jpg?v=1"/>
+                <ul>
+                    <li>
+                        <strong>Height:</strong>
+                        <span class="height"> 6'2"</span>
+                    </li>
+                    <li>
+                        <strong>Weight:</strong>
+                        <span class="weight"> 198</span>
+                    </li>
+                    <li>
+                        <strong>Average BPM: </strong>
+                        <span class="bpm"> 78</span>
+                    </li>
+                    <li>
+                        <strong>Average Systolic:</strong>
+                        <span class="systolic"> 117</span>
+                    </li>
+                    <li>
+                        <strong>Average Diastolic:</strong>
+                        <span class="disatolic"> 76</span>
+                    </li>
+                </ul>
+            </section>
+        </div>
+        <div class="col-md-8">
+            <section class="chart">
+                <h3>Livestream of In-Space Vitals</h3>
+                <div class="live-chart" style="width:100%; height:200px;"></div>
+            </section>             
+            <section class="chart">
+                        <h3>Activity Levels in Last 24 Hours</h3>
+                        <div class="activity-chart" style="width:100%; height:300px;"></div>
+                    </section>                    
                     <section class="chart">
                         <h3>Astronaut Overall Health vs. Other Astronauts</h3>
-                        <p>chart section placeholder</p>
-                    </section>
-                    <section class="chart">
-                        <h3>Astronaut Overall Health vs. Crowdsourced Data</h3>
-                        <p>chart section placeholder</p>
-                    </section>                     
-                </div>
-            </div>
-            <hr>
-            <footer>
-                <p>© NASA Space Apps 2015</p>
-            </footer>
-        </div>         
-        <!-- /container -->
-        <!-- Bootstrap core JavaScript
-    ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
-        <script src="assets/js/jquery.min.js"></script>
-        <script src="bootstrap/js/bootstrap.min.js"></script>
-        <!--script src="assets/js/interface.js"></script-->
-        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
-        <script src="//use.typekit.net/twx7alm.js"></script>
-        <script>try{Typekit.load();}catch(e){}</script>
-        <script src="assets/js/vendor/d3.min.js"></script>
-        <script src="assets/js/vendor/c3.min.js"></script>
-        <script src="assets/js/main.js"></script>
-        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
-        <script>$(document).ready(function(){
+                        <div class="health-chart-all" style="width:100%; height:200px;"></div>
+                    </section>     
+        </div>
+    </div>
+    <hr>
+</div>
+<footer>
+    <p>© NASA Space Apps 2015</p>
+</footer> 
+
+<script src="assets/js/jquery.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<!--script src="assets/js/interface.js"></script-->
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+<script src="//use.typekit.net/twx7alm.js"></script>
+<script>try{Typekit.load();}catch(e){}</script>
+<script src="assets/js/vendor/d3.min.js"></script>
+<script src="assets/js/vendor/c3.min.js"></script>
+<script src="assets/js/main.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+<script>$(document).ready(function(){
             App.init("nasa-monitor")
         })</script>
-        <script src="assets/js/parallax.min.js"></script>
-    </body>
-</html>
+<script src="assets/js/parallax.min.js"></script>
