@@ -22,80 +22,79 @@
     <body>
         <!-- Main jumbotron for a primary marketing message or call to action -->
         <div class="jumbotron">
-            <div class="container parallax-window" data-parallax="scroll" data-image-src="http://apod.nasa.gov/apod/image/1412/ObsMntsUni_dmitriev_1280.jpg">
-                <nav class="navbar navbar-default" role="navigation"> 
-                    <div class="container-fluid"> 
-                        <div class="navbar-header"> 
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> 
-                                <span class="sr-only">Toggle navigation</span> 
-                                <span class="icon-bar"></span> 
-                                <span class="icon-bar"></span> 
-                                <span class="icon-bar"></span> 
-                            </button>                             
-                            <a class="navbar-brand" href="index.html">
-                                <img src="assets/images/logo.png" title="Elevate"/>
-                            </a>                             
-                        </div>                         
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> 
-                            <ul class="nav navbar-nav"> 
-                                <li>
-                                    <a href="about.html">About</a>
-                                </li>                                 
-                                <li>
-                                    <a href="users.html">Your Account</a>
-                                </li>                                 
-                                <li class="active">
-                                    <a href="nasa-front.html">NASA</a>
-                                </li>                                 
-                            </ul>                             
-                            <ul class="nav navbar-nav navbar-right"> 
-                                <div class="navbar-collapse collapse">
-                                    <span class="navbar-brand" href="#">Hello <span class="username">User!</span></span> 
-                                </div>
-                                <!--/.navbar-collapse -->
-                            </ul>                             
-                        </div>                         
+        
+             <div class="container parallax-window" data-parallax="scroll" data-image-src="http://apod.nasa.gov/apod/image/1412/ObsMntsUni_dmitriev_1280.jpg">
+            <nav class="navbar navbar-default" role="navigation"> 
+                <div class="container-fluid"> 
+                    <div class="navbar-header"> 
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> 
+                            <span class="sr-only">Toggle navigation</span> 
+                            <span class="icon-bar"></span> 
+                            <span class="icon-bar"></span> 
+                            <span class="icon-bar"></span> 
+                        </button>                         
+                        <a class="navbar-brand" href="index.html"><img src="assets/images/logo.png" title="Elevate"/>
+                        </a> 
                     </div>                     
-                </nav>
-                <div class="container">
-                    <div class="row mast">
-                        <div class="ol-md-12">
-                            <h1>NASA Control Panel</h1>
-                            <p>67 New Crowdsourced Data Points Since Last Login</p>
-                            <div class="row">
-                                <div class="container col-md-2">
-                                    <button type="button" class="btn btn-primary btn-lg">Monitor Astronaut Health</button>
-                                </div>
-                                <div class="container col-md-2">
-                                    <button type="button" class="btn btn-primary btn-lg">Test Colony Candidate</button>
-                                </div>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> 
+                        <ul class="nav navbar-nav"> 
+                            <li>
+                                <a href="about.html">About</a>
+                            </li>                             
+                            <li>
+                                <a href="users.html">Your Account</a>
+                            </li>                             
+                            <li class="active">
+                                <a href="nasa-front.html">NASA</a>
+                            </li>                             
+                        </ul>                         
+                        <ul class="nav navbar-nav navbar-right"> 
+                            <div class="navbar-collapse collapse">
+                                <span class="navbar-brand" href="#">Hello <span class="username">User!</span></span> 
+                            </div>
+                            <!--/.navbar-collapse -->
+                        </ul>                         
+                    </div>                     
+                </div>                 
+            </nav>
+            <div class="container">
+                <div class="row mast">
+                    <div class="ol-md-12">
+                        <h1>NASA Control Panel</h1>
+                        <p>67 New Crowdsourced Data Points Since Last Login</p>
+                        <div class="row">
+                            <div class="container col-md-2">
+                                <button type="button" class="btn btn-primary btn-lg">Monitor Astronaut Health</button>
+                            </div>
+                            <div class="container col-md-2">
+                                <button type="button" class="btn btn-primary btn-lg">Test Colony Candidate</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            </div>
         </div>
         <style>
             .chart .c3-line{
-            stroke-width: 3px;
+                stroke-width: 3px;
             }
             .chart .c3-circle{
-            stroke-width: 5px;
+                stroke-width: 5px;
             }
-
-</style>
+        </style>
         <div class="container">
             <!-- Example row of columns -->
             <div class="row">
                 <div class="col-md-4">
+                  
                     <section class="chart status normal green">
                         <h3>Status: Overall Health</h3>
                         <style>
                             .nasaDashSummary .c3-target-Tablet text, .nasaDashSummary .c3-chart-arc text {
-                            fill: #5c5c5c;
+                               fill: #5c5c5c;
                             }
-
-</style>
+                        </style>
                         <div class="nasaDashSummary" style="width:calc(100% - 20px); height:150px; position:relative; top:10px; left:10px;"></div>
                     </section>
                     <section class="chart status alert">
@@ -103,9 +102,10 @@
                         <p>[This Astronaut] deviates [XX]% from standard [BPM]. Additional testing may be required
                     </section>
                 </div>
+
                 <div class="col-md-8">
-                    <div id="dashboards">
-                        <!--section class="chart">
+             <div id="dashboards">
+                    <!--section class="chart">
                         <h3>Livestream of Crowdsoured Resting BPM</h3>
                         <p>chart section placeholder</p>
                         <div id="flow-chart-1" style="width:calc(100% - 20px); height:300px; position:relative; top:10px; left:10px;"></div>
@@ -122,14 +122,17 @@
                     <section class="chart">
                         <h3>Chart name</h3>
                         <p>chart section placeholder</p>
-                    </section> -->                         
-                    </div>
+                    </section> -->                     
                 </div>
+                </div>
+
+                
             </div>
-        </div>
-        <footer>
-            <p>&copy; NASA Space Apps 2015</p>
-        </footer>         
+
+            <footer>
+                <p>&copy; NASA Space Apps 2015</p>
+            </footer>
+        </div>         
         <!-- /container -->
         <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -139,17 +142,20 @@
         <!--script src="assets/js/interface.js"></script-->
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
         <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+        
         <script src="//use.typekit.net/twx7alm.js"></script>
         <script src="assets/js/vendor/d3.min.js"></script>
         <script src="assets/js/vendor/c3.min.js"></script>
         <script src="assets/js/main.js"></script>
         <script>try{Typekit.load();}catch(e){}</script>
+
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
         <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
         <script>$(document).ready(function(){
             console.log("started")
             App.init("nasa-front")
         })</script>
-        <script src="assets/js/parallax.min.js"></script>
+
+         <script src="assets/js/parallax.min.js"></script>
     </body>
 </html>

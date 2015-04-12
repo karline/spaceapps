@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>Elevate :: Test Colony Candidate</title>
+        <!-- Bootstrap core CSS -->
+        <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+        <!-- Custom styles for this template -->
+        <link href="jumbotron.css" rel="stylesheet">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+        <link href="custom.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <!-- Main jumbotron for a primary marketing message or call to action -->
+        <div class="jumbotron">
+        <div class="container parallax-window" data-parallax="scroll" data-image-src="http://apod.nasa.gov/apod/image/1412/ObsMntsUni_dmitriev_1280.jpg">
+        <div id="showme"></div>
+            <nav class="navbar navbar-default" role="navigation"> 
+                <div class="container-fluid"> 
+                    <div class="navbar-header"> 
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> 
+                            <span class="sr-only">Toggle navigation</span> 
+                            <span class="icon-bar"></span> 
+                            <span class="icon-bar"></span> 
+                            <span class="icon-bar"></span> 
+                        </button>                         
+                        <a class="navbar-brand" href="#"><img src="assets/images/logo.png" alt="Elevate App"></a> 
+                    </div>                     
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> 
+                        <ul class="nav navbar-nav"> 
+                            <li>
+                                <a href="about.html">About</a>
+                            </li>                             
+                            <li>
+                                <a href="users.html">Your Account</a>
+                            </li>                             
+                            <li class="active">
+                                <a href="nasa-front.html">NASA</a>
+                            </li>                             
+                        </ul>                         
+                        <ul class="nav navbar-nav navbar-right"> 
+                            <div class="navbar-collapse collapse">
+                                <form class="navbar-form navbar-right" role="form">
+                                    <div class="form-group">
+                                        <input type="text" placeholder="Email" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" placeholder="Password" class="form-control">
+                                    </div>
+                                    <button type="submit" class="btn btn-success">Sign in</button>
+                                </form>
+                            </div>
+                            <!--/.navbar-collapse -->
+                        </ul>                         
+                    </div>                     
+                </div>                 
+            </nav>
+            <div class="container">
+                <div class="row">
+                    <div class="ol-md-12">
+                        <h1>Test Colonist Candidate</h1>
+                        <p>Test a candidate against astronaut data to assess his or her potential fitness for space service. </p>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="container">
+            <!-- Example row of columns -->
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Input Candidate Statistics<button type="button" id="inputstats" class="btn btn-default">Select</button></h2>
+
+                <div class="inputcandidate">
+                    <form role="form">
+                        <div class="form-group"> 
+                            <label class="control-label" for="height">Height in inches:</label>                             
+                            <input type="text" class="form-control" id="height" placeholder="">                             
+                        </div>
+                        <div class="form-group"> 
+                            <label class="control-label" for="height">Weight:</label>                             
+                            <input type="text" class="form-control" id="weight" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="weightmeasure">Value:</label>                             
+                            <select id="weightmeasure">
+                                <option value="kilogram">Kilograms</option>
+                                <option value="pound">Pound</pound>
+                            </select>                             
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="age">Age:</label>                             
+                            <input type="text" class="form-control" id="age" placeholder="">                             
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="gender">Gender:</label>                             
+                            <select id="weightmeasure">
+                                <option value="male">Male</option>
+                                <option value="female">Female</pound>
+                            </select>                             
+                        </div>
+                        <h3>Biostatistics:</h3>
+                        <div class="form-group"> 
+                            <label class="control-label" for="height">Resting Heart Rate</label>                             
+                            <input type="text" class="form-control" id="bpm" placeholder="Enter bpm">                             
+                        </div>                         
+                        <div class="form-group"> 
+                            <label class="control-label" for="systolic">Systolic Blood Pressure</label>                             
+                            <input type="text" class="form-control" id="diastolicbloodpressure" placeholder="">                             
+                        </div>                         
+                        <div class="form-group"> 
+                            <label class="control-label" for="weight">Weight</label>                             
+                            <input type="text" class="form-control" id="weight" placeholder="">                             
+                        </div>                         
+                        <h3>Fitness Stats:</h3>
+                        <div class="form-group"> 
+                            <label class="control-label" for="situps">Situps in a Minute</label>                             
+                            <input type="text" class="form-control" id="situps" placeholder="">                             
+                        </div>                         
+                        <div class="form-group"> 
+                            <label class="control-label" for="pushups">Pushups in a Minute</label>                             
+                            <input type="password" class="form-control" id="pushups" placeholder="">                             
+                        </div>                         
+                        <div class="form-group"> 
+                            <label class="control-label" for="weight">1 Mile Run Time</label>                             
+                            <input type="text" class="form-control" id="weight" placeholder="">                             
+                        </div>
+                        <button type="submit" class="btn">Submit</button>                         
+                    </form>
+                    </div><!-- close container -->
+                </div>
+                <div class="col-md-6">
+                    <h2>or Select Existing User <button type="button" id="selectuser" class="btn btn-default">Select</button></h2>
+
+                    <div class="selectcandidate">
+                    <form role="form"> 
+                        <div class="form-group"> 
+                            <div class="form-group"> 
+                                <label class="control-label" for="formInput21">Select User</label>                                 
+                                <select id="formInput21" class="form-control"> 
+                                    <option>Name Here</option>                                     
+                                    <option>2</option>                                     
+                                    <option>3</option>                                     
+                                </select>
+                            </div>                             
+                        </div>                         
+                        <button type="submit" class="btn">Submit</button>                         
+                    </form>
+
+                    </div><!-- close container -->
+                </div>
+            </div>
+            <div class="row results">
+                 <div class="col-md-4">
+                  
+                    <section class="chart status normal">
+                        <h3>Summary</h3>
+                        <p>[This Candidate] may be a good fit.</p>
+                    </section>
+                    <section class="chart status alert">
+                        <h3>Alert</h3>
+                        <p>[This Astronaut] deviates [XX]% from standard [BPM]. Additional testing may be required
+                    </section>
+                </div>
+
+                <div class="col-md-8">
+                      <section class="chart">
+                        <h3>Candidate Overall Health vs. Crowdsourced Data</h3>
+                        <p>chart section placeholder</p>
+                    </section>
+                    <section class="chart">
+                        <h3>Candidate Overall Health vs. Astronaut Data</h3>
+                        <p>chart section placeholder</p>
+                    </section>      
+
+                <h3>Outliers: Positive</h3>                     
+                    <section class="chart">
+                        <h3>Chart name</h3>
+                        <p>chart section placeholder</p>
+                    </section>
+
+                <h3>Outliers: Negative</h3>
+                    <section class="chart">
+                        <h3>Chart name</h3>
+                        <p>chart section placeholder</p>
+                    </section>                     
+                </div>
+                
+            </div>
+            <footer>
+                <p>© NASA Space Apps 2015</p>
+            </footer>
+        </div>         
+        <!-- /container -->
+        <!-- Bootstrap core JavaScript
+    ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/js/interface.js"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+
+         <script src="assets/js/parallax.min.js"></script>
+    </body>
+</html>
