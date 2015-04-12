@@ -10,7 +10,7 @@ app.get('/', function(req, res) {
   res.sendFile('index.html', {root: __dirname })
 });
 
-app.post('/submit-data', function(req, res) {
+app.post('/submit-candidate', function(req, res) {
   var remoteUrl = 'http://107.170.101.126:8080';
   fetch(remoteUrl, {method: post})
     .then(function(resp) {
@@ -29,6 +29,10 @@ app.get('/about.html', function(req, res) {
 
 app.get('/nasa-front.html', function(req, res) {
   res.sendFile('nasa-front.html', {root: __dirname })
+});
+
+app.get('/nasa-testcandidate.html', function(req, res) {
+  res.sendFile('nasa-testcandidate.html', {root: __dirname })
 });
 
 app.listen(8888);
