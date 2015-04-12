@@ -11,6 +11,7 @@
         <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
         <!-- Custom styles for this template -->
         <link href="jumbotron.css" rel="stylesheet">
+        <link href="assets/css/c3.min.css" rel="stylesheet">
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -68,7 +69,13 @@
                         <h1>Welcome back, Jon.</h1>
                     </div>
                     <div class="ol-md-6">
-                        <p>You are 47% as fit as an astronaut.</p>
+                        <p>You are <span class="fitnessLevel">47%</span> as fit as an astronaut.</p>
+                        <style>
+                            .fitnessGauge .c3-target-Tablet text, .fitnessGauge .c3-chart-arc text {
+                               fill: #fff;
+                            }
+                        </style>
+                        <div class="fitnessGauge" style="width:300px; height:150px;"></div>
                     </div>
                 </div>
             </div>
@@ -118,9 +125,8 @@
                     <h2>Your Stats</h2>
                     <p>Placeholder text</p>
                    
-                    <section class="chart"><h3>Chart name</h3><p>chart section placeholder</p></section>
-
-                  <section class="chart"><h3>Chart name</h3><p>chart section placeholder</p></section>                     
+                    <section class="chart"><h3>Weight Distribution</h3><div style="height:300px; width:100%;" class="weight_chart"></div></section>
+                  <section class="chart"><h3>Height Distribution</h3><div  style="height:300px; width:100%;" class="height_chart"></div></section>                     
                     
                 </div>
             </div>
@@ -139,7 +145,13 @@
 
         <script src="//use.typekit.net/twx7alm.js"></script>
         <script>try{Typekit.load();}catch(e){}</script>
+        <script src="assets/js/vendor/d3.min.js"></script>
+        <script src="assets/js/vendor/c3.min.js"></script>
+        <script src="assets/js/main.js"></script>
 
         <script src="assets/js/parallax.min.js"></script>
+        <script>$(document).ready(function(){
+            App.init("nasa-user")
+        })</script>
     </body>
 </html>
