@@ -31,7 +31,7 @@
                             <span class="icon-bar"></span> 
                             <span class="icon-bar"></span> 
                         </button>                         
-                        <a class="navbar-brand" href="#"><img src="assets/images/logo.png" alt="Elevate App"></a> 
+                        <a class="navbar-brand" href="index.html"><img src="assets/images/logo.png" alt="Elevate App"></a> 
                     </div>                     
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> 
                         <ul class="nav navbar-nav"> 
@@ -39,23 +39,14 @@
                                 <a href="#">About</a>
                             </li>                             
                             <li class="active">
-                                <a href="#">For Users</a>
+                                <a href="users.html">For Users</a>
                             </li>                             
                             <li>
-                                <a href="#">For NASA</a>
+                                <a href="nasa-front.html">For NASA</a>
                             </li>                             
                         </ul>                         
                         <ul class="nav navbar-nav navbar-right"> 
                             <div class="navbar-collapse collapse">
-                                <form class="navbar-form navbar-right" role="form">
-                                    <div class="form-group">
-                                        <input type="text" placeholder="Email" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" placeholder="Password" class="form-control">
-                                    </div>
-                                    <button type="submit" class="btn btn-success">Sign in</button>
-                                </form>
                             </div>
                             <!--/.navbar-collapse -->
                         </ul>                         
@@ -123,8 +114,21 @@
                 </div>
                 <div class="col-md-6">
                     <h2>Your Stats</h2>
-                    <p>Placeholder text</p>
-                   
+                    <p>Compared to NASA's astronauts</p>
+                   <style>.axis path,
+                        .axis line {
+                            fill: none;
+                            stroke: #000;
+                            shape-rendering: crispEdges;
+                        }
+                        /*.x.axis path {
+                            display: none;
+                        }*/
+                        .line {
+                            fill: none;
+                            stroke: steelblue;
+                            stroke-width: 1.5px;
+                        }</style>
                     <section class="chart"><h3>Weight Distribution</h3><div style="height:300px; width:100%;" class="weight_chart"></div></section>
                   <section class="chart"><h3>Height Distribution</h3><div  style="height:300px; width:100%;" class="height_chart"></div></section>                     
                     
