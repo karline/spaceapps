@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/karline/spaceapps",
   "dependencies": {
-    "express": "^4.12.3"
+    "express": "^4.12.3",
+    "node-fetch": "^1.0.6"
   }
 }
