@@ -1,9 +1,13 @@
 var App = (function(App, $){
+    App.server = "http://107.170.101.126:8080"
     App.settings = {}
     App.init = function(name){
         switch(name){
             case "nasa-front":
                 App.initNasaFront()
+                break;
+            case "nasa-user":
+                App.initUser()
                 break;
         }
     }
@@ -37,7 +41,14 @@ var App = (function(App, $){
         })
     }
     App.login = function(){
-        App.disableLogin()
+        var username = $("#email").val().trim()
+        var password = $("#password").val().trim()
+        var tok = username + ':' + password;
+        var hash = btoa(tok);
+        var url = App.server + "/login"
+        App.makeRequest(url, "POST", "json", {}, hash, "application/json", function(){
+            location.replace(document.URL.split("index.html")[0] + "users.html")
+        }, function(){})
     }
     App.disableLogin = function(){
         $(".loginTile, .loginOverlay").removeClass("shown")
@@ -57,11 +68,18 @@ var App = (function(App, $){
     App.readURLParam = function(name){
         return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null
     }
-    App.createChart = function(selector, dataSet, async){
-        var chart = c3.generate({
-            bindto: selector,
-            data: dataSet
-        });
+    App.createChart = function(selector, dataSet, async, name){
+        if(name){
+            App[name] = c3.generate({
+                bindto: selector,
+                data: dataSet
+            });
+        }else{
+            var chart = c3.generate({
+                bindto: selector,
+                data: dataSet
+            });
+        }
     }
     App.createRandomLineChart = function(){
         var data = {
@@ -113,6 +131,7 @@ var App = (function(App, $){
         else App.createChart(selector, d, false)
     }
     App.addDataToGauge = function(name, min, range){
+        console.log(name)
         var val = min + parseInt((Math.random() * range).toFixed(2))
         App[name].load({
           columns: [['data', val]]
@@ -235,6 +254,150 @@ var App = (function(App, $){
             }
             App.createRandomGauge(".nasaDashSummary", dataGauge, "nasaDashSummary", true, 90, 10)
         })
+    }
+    App.initUser = function(){
+        App.makeNormalChart(".weight_chart")
+        App.makeNormalChart(".height_chart")
+        var value = 50 + parseInt(Math.random() * 30)
+        var dataGauge = {
+                columns: [
+                    ['data', value]
+                ],
+                type: 'gauge',
+                colors:{
+                    'data': "#59DB59"
+                }
+            }
+        App.createRandomGauge(".fitnessGauge", dataGauge, "fitnessGauge")
+        $(".fitnessLevel").text(value + "%")
+    }
+    App.makeNormalChart = function(selector){
+        var data = App.getNormalData(); // popuate data 
+        var margin = {
+                top: 20,
+                right: 20,
+                bottom: 30,
+                left: 50
+            },
+            width = $(selector).width() - margin.left - margin.right,
+            height = $(selector).height() - margin.top - margin.bottom;
+
+        var x = d3.scale.linear()
+            .range([0, width]);
+
+        var y = d3.scale.linear()
+            .range([height, 0]);
+
+        var xAxis = d3.svg.axis()
+            .scale(x)
+            .orient("bottom");
+
+        var yAxis = d3.svg.axis()
+            .scale(y)
+            .orient("left");
+
+        var line = d3.svg.line()
+            .x(function(d) {
+                return x(d.q);
+            })
+            .y(function(d) {
+                return y(d.p);
+            });
+
+        var svg = d3.select(selector).append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+        x.domain(d3.extent(data, function(d) {
+            return d.q;
+        }));
+        y.domain(d3.extent(data, function(d) {
+            return d.p;
+        }));
+
+        svg.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + height + ")")
+            .call(xAxis);
+
+        svg.append("g")
+            .attr("class", "y axis")
+            .call(yAxis);
+
+        svg.append("path")
+            .datum(data)
+            .attr("class", "line")
+            .attr("d", line);
+    }
+
+    App.getNormalData = function() {
+        var data = [];
+        for (var i = 0; i < 100000; i++) {
+            q = App.normal() // calc random draw from normal dist
+            p = App.gaussian(q) // calc prob of rand draw
+            el = {
+                "q": q,
+                "p": p
+            }
+            data.push(el)
+        };
+        data.sort(function(x, y) {
+            return x.q - y.q;
+        });	
+        return data
+    }
+
+    App.normal = function() {
+        var x = 0,
+            y = 0,
+            rds, c;
+        do {
+            x = Math.random() * 2 - 1;
+            y = Math.random() * 2 - 1;
+            rds = x * x + y * y;
+        } while (rds == 0 || rds > 1);
+        c = Math.sqrt(-2 * Math.log(rds) / rds); // Box-Muller transform
+        return x * c; // throw away extra sample y * c
+    }
+    App.gaussian = function(x){
+        var gaussianConstant = 1 / Math.sqrt(2 * Math.PI),
+            mean = 0,
+            sigma = 1;
+
+        x = (x - mean) / sigma;
+        return gaussianConstant * Math.exp(-.5 * x * x) / sigma;
+    }
+   App.makeRequest = function (url, method, contentType, params, auth, paramsType, succ, fail){
+        params = method != "GET" ? JSON.stringify(params) : params
+        $.ajax({ 
+            url: url,
+            type: method,
+            contentType: contentType,
+            data: params,
+            dataType: paramsType,
+            cache: false,
+            beforeSend: function (xhr) {
+                if(auth){
+                    xhr.setRequestHeader ("Authorization", "Basic " + auth);
+                    console.log(auth)
+                }
+            },
+            complete: function (xhr, status) {
+                xhr.onreadystatechange = null;
+                xhr.abort = null;
+                delete xhr.onreadystatechange;
+                delete xhr.abort;
+                xhr = null;
+            },
+            success: function(data){
+                succ(data)
+            },
+            error: function(data){
+                fail(data)
+            }   
+        });    
     }
     return App    
 }(App || {}, jQuery))
