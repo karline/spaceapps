@@ -144,6 +144,7 @@ var App = (function(App, $){
         }, 6000)
     }
     App.createFlowChart = function(selector, name, seriesName, min, range, color){
+        $(selector).html('')
         var time = new Date()
         var time2 = new Date()
         time2.setSeconds(time.getSeconds() - 3)
@@ -460,6 +461,7 @@ var App = (function(App, $){
                     }
                 }
                 App.createRandomGauge(".healthChart", dataGauge, "healthChart")
+                App.createFlowChart(".live-chart", "live-chart", "BPM", [70, 60, 100], [5, 10, 10], ["#e54d42", "#0072d0", "#1abc9c"])
             })
             $("#submit").trigger("click")
         })
