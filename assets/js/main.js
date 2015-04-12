@@ -53,6 +53,7 @@ var App = (function(App, $){
         var hash = btoa(tok);
         var url = App.server + "/login"
         App.makeRequest(url, "POST", "json", {}, hash, "application/json", function(){
+            debugger;
             location.replace(document.URL.split("index.html")[0] + "users.html")
         }, function(){})
     }
@@ -532,6 +533,7 @@ var App = (function(App, $){
     }
    App.makeRequest = function (url, method, contentType, params, auth, paramsType, succ, fail){
         params = method != "GET" ? JSON.stringify(params) : params
+        debugger;
         $.ajax({ 
             url: url,
             type: method,
