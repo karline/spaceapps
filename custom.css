@@ -321,3 +321,7 @@ img.fitwidth {
 .user .parallax-window img {
   right: -200px;
 }
+
+.chart.alert p{
+    color: #fff;
+}
